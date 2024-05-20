@@ -19,7 +19,7 @@ CREATE TABLE Estudiante(
 
 CREATE TABLE Tutor(
 	id_tutor SERIAL PRIMARY KEY,
-	ci INT Unique,
+	ci INT UNIQUE,
 	id_estudiante INT,
 	nombre VARCHAR(80) NOT NULL,
 	apellido VARCHAR(100) NOT NULL,
@@ -27,6 +27,20 @@ CREATE TABLE Tutor(
 	telefono INT NOT NULL,
 	direccion VARCHAR(150) NOT NULL,
 	FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante)
+);
+
+CREATE TABLE Docente(
+	id_docente SERIAL PRIMARY KEY,
+	id_usuario INT,
+	ci INT UNIQUE,
+	nombre VARCHAR(80) NOT NULL,	
+	apellido VARCHAR(100) NOT NULL,
+	genero VARCHAR(30) NOT NULL,
+	f_nacimiento DATE,
+	especialidad VARCHAR(80) NOT NULL,
+	direccion VARCHAR(150) NOT NULL,
+	telefono INT NOT NULL,
+	FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
 
