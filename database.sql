@@ -1,0 +1,9 @@
+CREATE DATABASE SistemaNotas;
+
+CREATE TABLE Usuario(
+	id_usuario SERIAL PRIMARY KEY,
+	username VARCHAR(20) NOT NULL,
+	pass VARCHAR(20) NOT NULL
+);
+
+
