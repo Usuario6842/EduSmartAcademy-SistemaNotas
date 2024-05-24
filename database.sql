@@ -43,6 +43,16 @@ CREATE TABLE Docente(
 	FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
+CREATE TABLE Materia(
+	id_materia SERIAL PRIMARY KEY,
+	nombre VARCHAR(80) NOT NULL,
+	descripcion VARCHAR(400) NOT NULL
+);
+
+
+
+
+
 
 
 
