@@ -49,6 +49,17 @@ CREATE TABLE Materia(
 	descripcion VARCHAR(400) NOT NULL
 );
 
+CREATE TABLE MCalificacion(
+	id_mc SERIAL PRIMARY KEY,
+	id_materia INT,
+	id_estudiante INT,
+	id_docente INT, 
+	FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
+	FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante),
+	FOREIGN KEY (id_docente) REFERENCES Docente(id_docente)
+);
+
+
 
 
 
