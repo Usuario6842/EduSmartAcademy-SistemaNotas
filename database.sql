@@ -59,6 +59,17 @@ CREATE TABLE MCalificacion(
 	FOREIGN KEY (id_docente) REFERENCES Docente(id_docente)
 );
 
+CREATE TABLE DCalificacion(
+	id_dc SERIAL PRIMARY KEY,
+	id_mc INT,
+	n_ser INT NOT NULL,
+	n_saber INT NOT NULL,
+	n_hacer INT NOT NULL,
+	n_decidir INT NOT NULL,
+	autoevaluacion INT NOT NULL, 
+	n_final INT NOT NULL, 
+	FOREIGN KEY (id_mc) REFERENCES MCalificacion(id_mc)
+);
 
 
 
