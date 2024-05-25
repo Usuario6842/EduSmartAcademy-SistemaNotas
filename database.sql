@@ -106,8 +106,15 @@ CREATE TABLE Estudiante_Materia(
 
 
 
-
-
-
+CREATE TABLE Plantel_Administrativo(
+	cod_plantel SERIAL PRIMARY KEY,
+	nombres VARCHAR(80) NOT NULL,
+	apellidos VARCHAR(100) NOT NULL,
+	telefono INT NOT NULL,
+	genero VARCHAR(30) NOT NULL,
+	ci INT UNIQUE,
+	cod_usuario INT,
+	FOREIGN KEY (cod_usuario) REFERENCES Usuario(id_usuario)
+);
 
 
