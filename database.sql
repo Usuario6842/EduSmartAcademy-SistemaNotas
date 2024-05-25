@@ -73,6 +73,15 @@ CREATE TABLE DCalificacion(
 
 
 
+CREATE TABLE Horario(
+	cod_horario SERIAL PRIMARY KEY,
+	dia VARCHAR(20) NOT NULL,
+	periodo INT NOT NULL
+);
+
+
+
+
 
 
 
