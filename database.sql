@@ -81,6 +81,14 @@ CREATE TABLE Horario(
 
 
 
+CREATE TABLE Aula(
+	cod_aula SERIAL PRIMARY KEY,
+	cod_horario INT,
+	grado INT NOT NULL,
+	paralelo VARCHAR(15) NOT NULL,
+	FOREIGN KEY (cod_horario) REFERENCES Horario(cod_horario)
+);
+
 
 
 
