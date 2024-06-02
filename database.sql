@@ -83,10 +83,9 @@ CREATE TABLE Horario(
 
 CREATE TABLE Aula(
 	cod_aula SERIAL PRIMARY KEY,
-	cod_horario INT,
+	nombre VARCHAR(50) NOT NULL,
 	grado INT NOT NULL,
 	paralelo VARCHAR(15) NOT NULL,
-	FOREIGN KEY (cod_horario) REFERENCES Horario(cod_horario)
 );
 
 
@@ -103,18 +102,4 @@ CREATE TABLE Estudiante_Materia(
 	FOREIGN KEY (cod_docente) REFERENCES Docente(id_docente),
 	FOREIGN KEY (cod_aula) REFERENCES Aula(cod_aula)
 );
-
-
-
-CREATE TABLE Plantel_Administrativo(
-	cod_plantel SERIAL PRIMARY KEY,
-	nombres VARCHAR(80) NOT NULL,
-	apellidos VARCHAR(100) NOT NULL,
-	telefono INT NOT NULL,
-	genero VARCHAR(30) NOT NULL,
-	ci INT UNIQUE,
-	cod_usuario INT,
-	FOREIGN KEY (cod_usuario) REFERENCES Usuario(id_usuario)
-);
-
 
