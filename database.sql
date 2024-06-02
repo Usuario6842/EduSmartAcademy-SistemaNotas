@@ -2,8 +2,16 @@ CREATE DATABASE SistemaNotas;
 
 CREATE TABLE Usuario(
 	id_usuario SERIAL PRIMARY KEY,
+	id_rol INT,
 	username VARCHAR(100) NOT NULL,
-	pass VARCHAR(20) NOT NULL
+	pass VARCHAR(20) NOT NULL,
+	FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
+);
+
+CREATE TABLE Rol (
+    id_rol SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+	descripcion VARCHAR(400) NOT NULL
 );
 
 CREATE TABLE Estudiante(
@@ -96,7 +104,6 @@ CREATE TABLE Aula(
 	grado INT NOT NULL,
 	paralelo VARCHAR(10) NOT NULL,
 );
-
 
 CREATE TABLE InscripcionMateria(
 	id_est_mat SERIAL PRIMARY KEY,
