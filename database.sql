@@ -89,14 +89,15 @@ CREATE TABLE Aula(
 );
 
 
-CREATE TABLE Estudiante_Materia(
+CREATE TABLE InscripcionMateria(
 	cod_est_mat SERIAL PRIMARY KEY,
 	cod_mateia INT,
 	cod_estudiante INT,
 	cod_docente INT,
 	cod_aula INT,
-	fecha_inicio DATE NOT NULL,
-	fecha_final DATE NOT NULL,
+	f_inscription DATE NOT NULL,
+	f_inicio DATE NOT NULL,
+	f_final DATE NOT NULL,
 	FOREIGN KEY (cod_mateia) REFERENCES Materia(id_materia),
 	FOREIGN KEY (cod_estudiante) REFERENCES Estudiante(id_estudiante),
 	FOREIGN KEY (cod_docente) REFERENCES Docente(id_docente),
