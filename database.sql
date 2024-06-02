@@ -71,15 +71,24 @@ CREATE TABLE DCalificacion(
 	FOREIGN KEY (id_mc) REFERENCES MCalificacion(id_mc)
 );
 
-
-
-CREATE TABLE Horario(
-	cod_horario SERIAL PRIMARY KEY,
-	dia VARCHAR(20) NOT NULL,
-	periodo INT NOT NULL
+CREATE TABLE MHorario(
+    id_mh SERIAL PRIMARY KEY,
+    dia VARCHAR(20) NOT NULL,
+    anio INT NOT NULL
 );
 
-
+CREATE TABLE DHorario (
+    id_dh SERIAL PRIMARY KEY,
+    id_mh INT NOT NULL,
+    periodo INT NOT NULL,
+    id_docente INT NOT NULL,
+    id_materia INT NOT NULL,
+    cod_aula INT NOT NULL,
+    FOREIGN KEY (id_mh) REFERENCES MHorario(id_mh),
+    FOREIGN KEY (id_docente) REFERENCES Docente(id_docente),
+    FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
+    FOREIGN KEY (cod_aula) REFERENCES Aula(cod_aula)
+);
 
 CREATE TABLE Aula(
 	cod_aula SERIAL PRIMARY KEY,
