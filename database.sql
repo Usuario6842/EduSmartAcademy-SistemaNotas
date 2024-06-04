@@ -1,4 +1,10 @@
-CREATE DATABASE SistemaNotas;
+CREATE DATABASE sistemaNotas-EduSmart;
+
+CREATE TABLE Rol (
+    id_rol SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+	descripcion VARCHAR(400) NOT NULL
+);
 
 CREATE TABLE Usuario(
 	id_usuario SERIAL PRIMARY KEY,
@@ -8,13 +14,7 @@ CREATE TABLE Usuario(
 	FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
 );
 
-CREATE TABLE Rol (
-    id_rol SERIAL PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-	descripcion VARCHAR(400) NOT NULL
-);
-
-CREATE TABLE Estudiante(
+CREATE TABLE Estudiante (
 	id_estudiante SERIAL PRIMARY KEY,
 	id_usuario INT,
 	nombre VARCHAR(100) NOT NULL,
@@ -37,18 +37,32 @@ CREATE TABLE Tutor(
 	FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante)
 );
 
-CREATE TABLE Docente(
-	id_docente SERIAL PRIMARY KEY,
+CREATE TABLE Cargo (
+    id_cargo SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(400)
+);
+
+CREATE TABLE Personal(
+    id_personal SERIAL PRIMARY KEY,
+	id_cargo INT,
 	id_usuario INT,
 	ci INT UNIQUE,
-	nombre VARCHAR(100) NOT NULL,	
-	apellido VARCHAR(150) NOT NULL,
-	genero VARCHAR(30) NOT NULL,
-	f_nacimiento DATE,
-	especialidad VARCHAR(200) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(150) NOT NULL,
+    genero VARCHAR(30) NOT NULL,
+    f_nacimiento DATE NOT NULL,
+    telefono INT,
 	direccion VARCHAR(300) NOT NULL,
-	telefono INT NOT NULL,
-	FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
+	FOREIGN KEY (id_cargo) REFERENCES Cargo(id_cargo)
+);
+
+CREATE TABLE Docente(
+    id_docente SERIAL PRIMARY KEY,
+    id_personal INT,
+    especialidad VARCHAR(200) NOT NULL, 
+    FOREIGN KEY (id_personal) REFERENCES Personal(id_personal)
 );
 
 CREATE TABLE Materia(
@@ -85,6 +99,13 @@ CREATE TABLE MHorario(
     gestion INT NOT NULL
 );
 
+CREATE TABLE Aula(
+	id_aula SERIAL PRIMARY KEY,
+	nombre VARCHAR(50) NOT NULL,
+	grado INT NOT NULL,
+	paralelo VARCHAR(10) NOT NULL
+);
+
 CREATE TABLE DHorario (
     id_dh SERIAL PRIMARY KEY,
     id_mh INT NOT NULL,
@@ -96,13 +117,6 @@ CREATE TABLE DHorario (
     FOREIGN KEY (id_docente) REFERENCES Docente(id_docente),
     FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
     FOREIGN KEY (id_aula) REFERENCES Aula(id_aula)
-);
-
-CREATE TABLE Aula(
-	id_aula SERIAL PRIMARY KEY,
-	nombre VARCHAR(50) NOT NULL,
-	grado INT NOT NULL,
-	paralelo VARCHAR(10) NOT NULL,
 );
 
 CREATE TABLE InscripcionMateria(
@@ -119,4 +133,3 @@ CREATE TABLE InscripcionMateria(
 	FOREIGN KEY (id_docente) REFERENCES Docente(id_docente),
 	FOREIGN KEY (id_aula) REFERENCES Aula(id_aula)
 );
-
