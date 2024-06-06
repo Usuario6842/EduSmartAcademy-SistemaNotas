@@ -1,5 +1,6 @@
 package com.academy.edusmart.EduSmartAcademyAPI.service;
 
+import com.academy.edusmart.EduSmartAcademyAPI.exceptions.AulaNotFoundExcep;
 import com.academy.edusmart.EduSmartAcademyAPI.mapper.AulaMapper;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.request.AulaRequest;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.response.AulaResponse;
@@ -36,7 +37,7 @@ public class AulaServiceImp implements AulaService{
         Optional<Aula> aulaOptional = aulaRepository.findById(id);
         AulaResponse aulaResponse;
 
-        if(aulaOptional.isEmpty()) throw new RuntimeException();
+        if(aulaOptional.isEmpty()) throw new AulaNotFoundExcep();
 
         return AulaMapper.INSTANCE.toAulaResponse(aulaOptional.get());
     }
@@ -56,7 +57,7 @@ public class AulaServiceImp implements AulaService{
     public AulaResponse update(Long id, AulaRequest aulaRequest) {
         Optional<Aula> aulaOptional = aulaRepository.findById(id);
 
-        if(aulaOptional.isEmpty()) throw new RuntimeException();
+        if(aulaOptional.isEmpty()) throw new AulaNotFoundExcep();
 
         Aula aula = aulaOptional.get();
         aula.setNombre(aulaRequest.getNombre());
@@ -70,7 +71,7 @@ public class AulaServiceImp implements AulaService{
     public void delete(Long id) {
         Optional<Aula> aulaOptional = aulaRepository.findById(id);
 
-        if(aulaOptional.isEmpty()) throw new RuntimeException();
+        if(aulaOptional.isEmpty()) throw new AulaNotFoundExcep();
 
         aulaRepository.delete(aulaOptional.get());
     }
