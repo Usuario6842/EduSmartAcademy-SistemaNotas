@@ -1,8 +1,8 @@
 package com.academy.edusmart.EduSmartAcademyAPI.utils;
 
 public enum ErrorCatalog {
-    AULA_NOT_FOUND("ERR_AUL_001", "Aula not found."),
-    INVALID_USR("ERR_INV_002", "Invalid parameters."),
+    INVALID_ERROR("ERR_INV_001", "Invalid parameters."),
+    AULA_NOT_FOUND("ERR_AUL_002", "Aula not found."),
     GENERIC_ERROR("ERR_GEN_001", "An unexpected error occurred.");
 
     private final String code;
