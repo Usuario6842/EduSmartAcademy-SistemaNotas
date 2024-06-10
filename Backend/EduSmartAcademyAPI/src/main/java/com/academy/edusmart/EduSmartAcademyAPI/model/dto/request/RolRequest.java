@@ -9,6 +9,8 @@ public class RolRequest {
     @NotBlank(message = "El calpo nombre no puede estar vacio")
     private String nombre;
 
+    @NotNull(message = "El calpo nombre no puede ser nulo")
+    @NotBlank(message = "El calpo nombre no puede estar vacio")
     private String descripcion;
 
     public RolRequest() {
