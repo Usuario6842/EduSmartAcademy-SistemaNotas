@@ -11,7 +11,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("api/cargos")
 public class CargoController {
 
     public final CargoService cargoService;
