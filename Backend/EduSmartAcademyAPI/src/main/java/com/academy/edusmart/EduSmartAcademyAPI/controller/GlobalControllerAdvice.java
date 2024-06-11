@@ -1,6 +1,6 @@
 package com.academy.edusmart.EduSmartAcademyAPI.controller;
 
-import com.academy.edusmart.EduSmartAcademyAPI.exceptions.AulaNotFoundExcep;
+import com.academy.edusmart.EduSmartAcademyAPI.exceptions.*;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.response.ErrorResponse;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -28,6 +28,58 @@ public class GlobalControllerAdvice {
                 AULA_NOT_FOUND.getCode(),
                 HttpStatus.NOT_FOUND,
                 AULA_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(CargoNotFoundExcep.class)
+    public ErrorResponse handleCargoNotFoundExcep() {
+        List<String> detailMessages = List.of("El Cargo solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                CARGO_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                CARGO_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(MateriaNotFoundExcep.class)
+    public ErrorResponse handleMateriaNotFoundExcep() {
+        List<String> detailMessages = List.of("La materia solicitada no fue encontrada en la base de datos");
+        return new ErrorResponse(
+                MATERIA_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                MATERIA_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(RolNotFoundExcep.class)
+    public ErrorResponse handleRolNotFoundExcep() {
+        List<String> detailMessages = List.of("El rol solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                ROL_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                ROL_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(UsuarioNotFoundExcep.class)
+    public ErrorResponse handleUsuarioNotFoundExcep() {
+        List<String> detailMessages = List.of("El usuario solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                USUARIO_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                USUARIO_NOT_FOUND.getMessage(),
                 LocalDateTime.now(),
                 detailMessages
         );

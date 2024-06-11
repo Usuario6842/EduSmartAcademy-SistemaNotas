@@ -3,6 +3,10 @@ package com.academy.edusmart.EduSmartAcademyAPI.utils;
 public enum ErrorCatalog {
     INVALID_ERROR("ERR_INV_001", "Invalid parameters."),
     AULA_NOT_FOUND("ERR_AUL_002", "Aula not found."),
+    CARGO_NOT_FOUND("ERR_CAR_003", "Cargo not found."),
+    MATERIA_NOT_FOUND("ERR_MAT_004", "Materia not found."),
+    ROL_NOT_FOUND("ERR_ROL_005", "Rol not found."),
+    USUARIO_NOT_FOUND("ERR_USR_006", "Usuario not found."),
     GENERIC_ERROR("ERR_GEN_001", "An unexpected error occurred.");
 
     private final String code;

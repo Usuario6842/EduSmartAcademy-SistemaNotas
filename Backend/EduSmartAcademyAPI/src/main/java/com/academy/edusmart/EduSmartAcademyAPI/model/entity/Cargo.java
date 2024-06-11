@@ -1,12 +1,11 @@
 package com.academy.edusmart.EduSmartAcademyAPI.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import javax.annotation.processing.Generated;
 
+@Entity
+@Table(name = "Cargo")git
 public class Cargo {
 
     @Id
