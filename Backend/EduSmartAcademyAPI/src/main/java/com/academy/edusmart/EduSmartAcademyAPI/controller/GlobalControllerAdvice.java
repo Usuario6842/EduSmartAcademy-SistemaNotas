@@ -98,6 +98,19 @@ public class GlobalControllerAdvice {
         );
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(DocenteNotFoundExcep.class)
+    public ErrorResponse handleDocenteNotFoundExcep() {
+        List<String> detailMessages = List.of("El docente solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                DOCENTE_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                DOCENTE_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
