@@ -85,6 +85,19 @@ public class GlobalControllerAdvice {
         );
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(PersonalNotFoundExcep.class)
+    public ErrorResponse handlePersonalNotFoundExcep() {
+        List<String> detailMessages = List.of("El personal solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                PERSONAL_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                PERSONAL_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
