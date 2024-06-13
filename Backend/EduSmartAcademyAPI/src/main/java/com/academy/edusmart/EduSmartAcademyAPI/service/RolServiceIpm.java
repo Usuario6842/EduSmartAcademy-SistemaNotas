@@ -1,5 +1,6 @@
 package com.academy.edusmart.EduSmartAcademyAPI.service;
 
+import com.academy.edusmart.EduSmartAcademyAPI.exceptions.RolNotFoundExcep;
 import com.academy.edusmart.EduSmartAcademyAPI.mapper.RolMapper;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.request.RolRequest;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.response.RolResponse;
@@ -36,9 +37,8 @@ public class RolServiceIpm implements RolService{
     @Override
     public RolResponse findById(long id) {
         Optional<Rol> rolOptional = rolRepository.findById(id);
-        RolResponse rolResponse;
 
-        if(rolOptional.isEmpty()) throw new RuntimeException();
+        if(rolOptional.isEmpty()) throw new RolNotFoundExcep();
         return RolMapper.INSTANCE.toRolResponse(rolOptional.get());
     }
 
@@ -56,7 +56,7 @@ public class RolServiceIpm implements RolService{
     public RolResponse update(Long id, RolRequest rolRequest) {
         Optional<Rol> rolOptional = rolRepository.findById(id);
 
-        if(rolOptional.isEmpty()) throw new RuntimeException();
+        if(rolOptional.isEmpty()) throw new RolNotFoundExcep();
 
         Rol rol = rolOptional.get();
         rol.setNombre(rolRequest.getNombre());
@@ -71,7 +71,7 @@ public class RolServiceIpm implements RolService{
     public void delete(long id) {
         Optional<Rol> rolOptional = rolRepository.findById(id);
 
-        if(rolOptional.isEmpty()) throw new RuntimeException();
+        if(rolOptional.isEmpty()) throw new RolNotFoundExcep();
 
         rolRepository.delete(rolOptional.get());
     }

@@ -35,7 +35,6 @@ public class AulaServiceImp implements AulaService{
     @Override
     public AulaResponse findById(Long id) {
         Optional<Aula> aulaOptional = aulaRepository.findById(id);
-        AulaResponse aulaResponse;
 
         if(aulaOptional.isEmpty()) throw new AulaNotFoundExcep();
 
