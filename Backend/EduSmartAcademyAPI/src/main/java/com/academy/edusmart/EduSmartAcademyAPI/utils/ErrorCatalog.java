@@ -7,6 +7,7 @@ public enum ErrorCatalog {
     MATERIA_NOT_FOUND("ERR_MAT_004", "Materia not found."),
     ROL_NOT_FOUND("ERR_ROL_005", "Rol not found."),
     USUARIO_NOT_FOUND("ERR_USR_006", "Usuario not found."),
+    ESTUDIANTE_NOT_FOUND("ERR_EST_008", "Estudiante not found."),
     GENERIC_ERROR("ERR_GEN_001", "An unexpected error occurred.");
 
     private final String code;
