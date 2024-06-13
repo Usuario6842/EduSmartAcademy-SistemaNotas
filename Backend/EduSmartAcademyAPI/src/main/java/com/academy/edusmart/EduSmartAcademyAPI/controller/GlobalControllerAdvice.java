@@ -124,6 +124,19 @@ public class GlobalControllerAdvice {
         );
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(TutorNotFoundExcep.class)
+    public ErrorResponse handleTutorNotFoundExcep() {
+        List<String> detailMessages = List.of("El tutor solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                TUTOR_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                TUTOR_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
