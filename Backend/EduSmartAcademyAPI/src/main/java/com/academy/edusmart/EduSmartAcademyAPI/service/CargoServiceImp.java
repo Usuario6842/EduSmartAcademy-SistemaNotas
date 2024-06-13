@@ -1,5 +1,6 @@
 package com.academy.edusmart.EduSmartAcademyAPI.service;
 
+import com.academy.edusmart.EduSmartAcademyAPI.exceptions.CargoNotFoundExcep;
 import com.academy.edusmart.EduSmartAcademyAPI.mapper.CargoMapper;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.request.CargoRequest;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.response.CargoResponse;
@@ -34,9 +35,8 @@ public class CargoServiceImp implements CargoService{
     @Override
     public CargoResponse findById(Long id){
         Optional<Cargo> cargoOptional = cargoRepository.findById(id);
-        CargoResponse cargoResponse;
 
-        if(cargoOptional.isEmpty()) throw new RuntimeException();
+        if(cargoOptional.isEmpty()) throw new CargoNotFoundExcep();
 
         return CargoMapper.INSTANCE.toCargoResponse(cargoOptional.get());
 
@@ -56,7 +56,7 @@ public class CargoServiceImp implements CargoService{
     public CargoResponse update(Long id, CargoRequest cargoRequest) {
         Optional<Cargo> cargoOptional = cargoRepository.findById(id);
 
-        if(cargoOptional.isEmpty()) throw new RuntimeException();
+        if(cargoOptional.isEmpty()) throw new CargoNotFoundExcep();
 
         Cargo cargo = cargoOptional.get();
         cargo.setNombre(cargoRequest.getNombre());
@@ -70,7 +70,7 @@ public class CargoServiceImp implements CargoService{
     public void delete(Long id) {
         Optional<Cargo> cargoOptional = cargoRepository.findById(id);
 
-        if(cargoOptional.isEmpty()) throw new RuntimeException();
+        if(cargoOptional.isEmpty()) throw new CargoNotFoundExcep();
 
         cargoRepository.delete(cargoOptional.get());
     }
