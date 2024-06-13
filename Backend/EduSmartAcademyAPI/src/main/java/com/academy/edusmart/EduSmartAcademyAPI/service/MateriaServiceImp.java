@@ -1,5 +1,6 @@
 package com.academy.edusmart.EduSmartAcademyAPI.service;
 
+import com.academy.edusmart.EduSmartAcademyAPI.exceptions.MateriaNotFoundExcep;
 import com.academy.edusmart.EduSmartAcademyAPI.mapper.MateriaMapper;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.request.MateriaRequest;
 import com.academy.edusmart.EduSmartAcademyAPI.model.dto.response.MateriaResponse;
@@ -37,7 +38,7 @@ public class MateriaServiceImp implements MateriaService{
         Optional<Materia> materiaOptional = materiaRepository.findById(id);
         MateriaResponse materiaResponse;
 
-        if(materiaOptional.isEmpty()) throw new RuntimeException();
+        if(materiaOptional.isEmpty()) throw new MateriaNotFoundExcep();
         return MateriaMapper.INSTANCE.toMateriaResponse(materiaOptional.get());
     }
 
@@ -55,7 +56,7 @@ public class MateriaServiceImp implements MateriaService{
     public MateriaResponse update(Long id, MateriaRequest materiaRequest) {
         Optional<Materia> materiaOptional = materiaRepository.findById(id);
 
-        if(materiaOptional.isEmpty()) throw new RuntimeException();
+        if(materiaOptional.isEmpty()) throw new MateriaNotFoundExcep();
 
         Materia materia = materiaOptional.get();
         materia.setNombre(materiaRequest.getNombre());
@@ -69,7 +70,7 @@ public class MateriaServiceImp implements MateriaService{
     public void delete(long id) {
         Optional<Materia> materiaOptional = materiaRepository.findById(id);
 
-        if(materiaOptional.isEmpty()) throw new RuntimeException();
+        if(materiaOptional.isEmpty()) throw new MateriaNotFoundExcep();
 
         materiaRepository.delete(materiaOptional.get());
     }
