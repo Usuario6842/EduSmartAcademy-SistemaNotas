@@ -97,6 +97,19 @@ public class GlobalControllerAdvice {
                 detailMessages
         );
     }
+  
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(EstudianteNotFoundExcep.class)
+    public ErrorResponse handleEstudianteNotFoundExcep() {
+        List<String> detailMessages = List.of("El estudiante solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                ESTUDIANTE_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                ESTUDIANTE_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(DocenteNotFoundExcep.class)
