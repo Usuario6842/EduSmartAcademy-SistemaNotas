@@ -137,6 +137,19 @@ public class GlobalControllerAdvice {
         );
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(InscripcionNotFoundExcep.class)
+    public ErrorResponse handleInscripcionNotFoundExcep() {
+        List<String> detailMessages = List.of("El registro de inscripcion solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                INSCRIPCION_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                INSCRIPCION_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
