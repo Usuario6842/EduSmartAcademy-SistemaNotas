@@ -150,6 +150,32 @@ public class GlobalControllerAdvice {
         );
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(MHorarioNotFoundExcep.class)
+    public ErrorResponse handleMHorarioNotFoundExcep() {
+        List<String> detailMessages = List.of("El registro de horario solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                MHORARIO_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                MHORARIO_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(DHorarioNotFoundExcep.class)
+    public ErrorResponse handleDHorarioNotFoundExcep() {
+        List<String> detailMessages = List.of("El registro del detalle de horario solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                DHORARIO_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                DHORARIO_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
