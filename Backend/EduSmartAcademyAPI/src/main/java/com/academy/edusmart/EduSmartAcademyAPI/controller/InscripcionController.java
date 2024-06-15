@@ -22,7 +22,7 @@ public class InscripcionController {
     public InscripcionController(InscripcionService inscripcionService) {
         this.inscripcionService = inscripcionService;
     }
-    
+
     @GetMapping
     public ResponseEntity<List<InscripcionResponse>> findAll(){
         List<InscripcionResponse> responses = inscripcionService.findAll();
