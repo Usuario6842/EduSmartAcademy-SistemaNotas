@@ -14,6 +14,8 @@ public enum ErrorCatalog {
     INSCRIPCION_NOT_FOUND("ERR_INS_011", "Registro de Inscripcion not found."),
     MHORARIO_NOT_FOUND("ERR_HOR_012", "Registro de Horario not found."),
     DHORARIO_NOT_FOUND("ERR_HOR_013", "Registro de detalle de horario not found."),
+    MCALIFICACION_NOT_FOUND("ERR_NOT_014", "Registro de Calificacion not found."),
+    DCALIFICACION_NOT_FOUND("ERR_NOT_015", "Registro de detalle de Calificacion not found."),
     GENERIC_ERROR("ERR_GEN_001", "An unexpected error occurred.");
 
     private final String code;
