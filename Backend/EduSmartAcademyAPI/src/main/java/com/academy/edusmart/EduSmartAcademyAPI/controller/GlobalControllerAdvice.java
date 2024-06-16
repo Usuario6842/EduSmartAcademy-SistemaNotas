@@ -176,6 +176,32 @@ public class GlobalControllerAdvice {
         );
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(MCalificacionNotFoundExcep.class)
+    public ErrorResponse handleMCalificacionNotFoundExcep() {
+        List<String> detailMessages = List.of("El registro de calificacion solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                MCALIFICACION_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                MCALIFICACION_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(DCalificacionNotFoundExcep.class)
+    public ErrorResponse handleDCalificacionNotFoundExcep() {
+        List<String> detailMessages = List.of("El registro de detalle de calificacion solicitado no fue encontrado en la base de datos");
+        return new ErrorResponse(
+                DCALIFICACION_NOT_FOUND.getCode(),
+                HttpStatus.NOT_FOUND,
+                DCALIFICACION_NOT_FOUND.getMessage(),
+                LocalDateTime.now(),
+                detailMessages
+        );
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
