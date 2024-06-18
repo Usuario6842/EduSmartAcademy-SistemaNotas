@@ -9,6 +9,8 @@ import com.academy.edusmart.EduSmartAcademyAPI.model.entity.Rol;
 import com.academy.edusmart.EduSmartAcademyAPI.model.entity.Usuario;
 import com.academy.edusmart.EduSmartAcademyAPI.repository.RolRepository;
 import com.academy.edusmart.EduSmartAcademyAPI.repository.UsuarioRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -68,9 +70,12 @@ public class UsuarioServiceImp implements UsuarioService{
 
         if(rolOptional.isEmpty()) throw new RolNotFoundExcep();
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(usuarioRequest.getPassword());
+
         Usuario usuario = new Usuario();
         usuario.setUsername(usuarioRequest.getUsername());
-        usuario.setPassword(usuarioRequest.getPassword());
+        usuario.setPassword(hashedPassword);
         usuario.setRol(rolOptional.get());
         Usuario usuarioSaved = usuarioRepository.save(usuario);
 
@@ -85,9 +90,12 @@ public class UsuarioServiceImp implements UsuarioService{
         if(optionalUsuario.isEmpty()) throw new UsuarioNotFoundExcep();
         if(rolOptional.isEmpty()) throw new RolNotFoundExcep();
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(usuarioRequest.getPassword());
+
         Usuario usuario = optionalUsuario.get();
         usuario.setUsername(usuarioRequest.getUsername());
-        usuario.setPassword(usuarioRequest.getPassword());
+        usuario.setPassword(hashedPassword);
         usuario.setRol(rolOptional.get());
         Usuario usuarioSaved = usuarioRepository.save(usuario);
 
