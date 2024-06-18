@@ -71,7 +71,7 @@ CREATE TABLE materia(
 	descripcion VARCHAR(400) NOT NULL
 );
 
-CREATE TABLE MCalificacion(
+CREATE TABLE m_calificacion(
 	id_mc SERIAL PRIMARY KEY,
 	id_materia INT,
 	id_estudiante INT,
@@ -81,7 +81,7 @@ CREATE TABLE MCalificacion(
 	FOREIGN KEY (id_docente) REFERENCES Docente(id_docente)
 );
 
-CREATE TABLE DCalificacion(
+CREATE TABLE d_calificacion(
 	id_dc SERIAL PRIMARY KEY,
 	id_mc INT,
 	n_ser INT NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE DCalificacion(
 	FOREIGN KEY (id_mc) REFERENCES MCalificacion(id_mc)
 );
 
-CREATE TABLE MHorario(
+CREATE TABLE m_horario(
     id_mh SERIAL PRIMARY KEY,
     dia VARCHAR(20) NOT NULL,
     gestion INT NOT NULL
@@ -106,7 +106,7 @@ CREATE TABLE aula(
 	paralelo VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE DHorario (
+CREATE TABLE d_horario (
     id_dh SERIAL PRIMARY KEY,
     id_mh INT NOT NULL,
     periodo INT NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE DHorario (
     FOREIGN KEY (id_aula) REFERENCES Aula(id_aula)
 );
 
-CREATE TABLE InscripcionMateria(
+CREATE TABLE inscripcion_materia(
 	id_est_mat SERIAL PRIMARY KEY,
 	id_materia INT,
 	id_estudiante INT,
