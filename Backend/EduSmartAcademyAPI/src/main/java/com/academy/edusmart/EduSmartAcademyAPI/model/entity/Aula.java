@@ -3,7 +3,7 @@ package com.academy.edusmart.EduSmartAcademyAPI.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Aula")
+@Table(name = "aula")
 public class Aula {
 
     @Id

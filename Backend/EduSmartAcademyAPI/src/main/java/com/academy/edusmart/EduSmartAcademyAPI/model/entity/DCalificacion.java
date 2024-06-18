@@ -3,7 +3,7 @@ package com.academy.edusmart.EduSmartAcademyAPI.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "DCalificacion")
+@Table(name = "d_calificacion")
 public class DCalificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

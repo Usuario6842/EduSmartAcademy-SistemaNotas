@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import javax.annotation.processing.Generated;
 
 @Entity
-@Table(name = "Cargo")
+@Table(name = "cargo")
 public class Cargo {
 
     @Id
