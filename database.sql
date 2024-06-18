@@ -1,6 +1,6 @@
 CREATE DATABASE sistemaNotas-EduSmart;
 
-CREATE TABLE Rol (
+CREATE TABLE Rol(
     id_rol SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
 	descripcion VARCHAR(400) NOT NULL
@@ -14,7 +14,7 @@ CREATE TABLE Usuario(
 	FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
 );
 
-CREATE TABLE Estudiante (
+CREATE TABLE Estudiante(
 	id_estudiante SERIAL PRIMARY KEY,
 	id_usuario INT,
 	nombre VARCHAR(100) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE Tutor(
 	FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante)
 );
 
-CREATE TABLE Cargo (
+CREATE TABLE Cargo(
     id_cargo SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(400)
