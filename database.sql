@@ -45,17 +45,17 @@ CREATE TABLE cargo(
 
 CREATE TABLE personal(
     id_personal SERIAL PRIMARY KEY,
-	id_cargo INT,
-	id_usuario INT,
-	ci INT UNIQUE,
+    id_cargo INT,
+    id_usuario INT,
+    ci INT UNIQUE,
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(150) NOT NULL,
     genero VARCHAR(30) NOT NULL,
     f_nacimiento DATE NOT NULL,
     telefono INT,
-	direccion VARCHAR(300) NOT NULL,
+    direccion VARCHAR(300) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
-	FOREIGN KEY (id_cargo) REFERENCES Cargo(id_cargo)
+    FOREIGN KEY (id_cargo) REFERENCES Cargo(id_cargo)
 );
 
 CREATE TABLE docente(
@@ -66,30 +66,30 @@ CREATE TABLE docente(
 );
 
 CREATE TABLE materia(
-	id_materia SERIAL PRIMARY KEY,
-	nombre VARCHAR(150) NOT NULL,
-	descripcion VARCHAR(400) NOT NULL
+    id_materia SERIAL PRIMARY KEY,
+    nombre VARCHAR(150) NOT NULL,
+    descripcion VARCHAR(400) NOT NULL
 );
 
 CREATE TABLE m_calificacion(
-	id_mc SERIAL PRIMARY KEY,
-	id_materia INT,
-	id_estudiante INT,
-	id_docente INT, 
-	FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
-	FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante),
-	FOREIGN KEY (id_docente) REFERENCES Docente(id_docente)
+    id_mc SERIAL PRIMARY KEY,
+    id_materia INT,
+    id_estudiante INT,
+    id_docente INT, 
+    FOREIGN KEY (id_materia) REFERENCES Materia(id_materia),
+    FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante),
+    FOREIGN KEY (id_docente) REFERENCES Docente(id_docente)
 );
 
 CREATE TABLE d_calificacion(
 	id_dc SERIAL PRIMARY KEY,
-	id_mc INT,
-	n_ser INT NOT NULL,
-	n_saber INT NOT NULL,
-	n_hacer INT NOT NULL,
-	n_decidir INT NOT NULL,
-	autoevaluacion INT NOT NULL, 
-	n_final INT NOT NULL, 
+    id_mc INT,
+	n_ser DOUBLE PRECISION NOT NULL,
+	n_saber DOUBLE PRECISION NOT NULL,
+	n_hacer DOUBLE PRECISION NOT NULL,
+	n_decidir DOUBLE PRECISION NOT NULL,
+	autoevaluacion DOUBLE PRECISION NOT NULL, 
+	n_final DOUBLE PRECISION NOT NULL, 
 	FOREIGN KEY (id_mc) REFERENCES MCalificacion(id_mc)
 );
 
