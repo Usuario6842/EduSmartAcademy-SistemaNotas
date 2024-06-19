@@ -1,12 +1,12 @@
 CREATE DATABASE sistemaNotas-EduSmart;
 
-CREATE TABLE Rol (
+CREATE TABLE rol(
     id_rol SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
 	descripcion VARCHAR(400) NOT NULL
 );
 
-CREATE TABLE Usuario(
+CREATE TABLE usuario(
 	id_usuario SERIAL PRIMARY KEY,
 	id_rol INT,
 	username VARCHAR(100) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Usuario(
 	FOREIGN KEY (id_rol) REFERENCES Rol(id_rol)
 );
 
-CREATE TABLE Estudiante (
+CREATE TABLE estudiante(
 	id_estudiante SERIAL PRIMARY KEY,
 	id_usuario INT,
 	nombre VARCHAR(100) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Estudiante (
 	FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
-CREATE TABLE Tutor(
+CREATE TABLE tutor(
 	id_tutor SERIAL PRIMARY KEY,
 	ci INT UNIQUE,
 	id_estudiante INT,
@@ -37,13 +37,13 @@ CREATE TABLE Tutor(
 	FOREIGN KEY (id_estudiante) REFERENCES Estudiante(id_estudiante)
 );
 
-CREATE TABLE Cargo (
+CREATE TABLE cargo(
     id_cargo SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(400)
 );
 
-CREATE TABLE Personal(
+CREATE TABLE personal(
     id_personal SERIAL PRIMARY KEY,
 	id_cargo INT,
 	id_usuario INT,
@@ -58,20 +58,20 @@ CREATE TABLE Personal(
 	FOREIGN KEY (id_cargo) REFERENCES Cargo(id_cargo)
 );
 
-CREATE TABLE Docente(
+CREATE TABLE docente(
     id_docente SERIAL PRIMARY KEY,
     id_personal INT,
     especialidad VARCHAR(200) NOT NULL, 
     FOREIGN KEY (id_personal) REFERENCES Personal(id_personal)
 );
 
-CREATE TABLE Materia(
+CREATE TABLE materia(
 	id_materia SERIAL PRIMARY KEY,
 	nombre VARCHAR(150) NOT NULL,
 	descripcion VARCHAR(400) NOT NULL
 );
 
-CREATE TABLE MCalificacion(
+CREATE TABLE m_calificacion(
 	id_mc SERIAL PRIMARY KEY,
 	id_materia INT,
 	id_estudiante INT,
@@ -81,7 +81,7 @@ CREATE TABLE MCalificacion(
 	FOREIGN KEY (id_docente) REFERENCES Docente(id_docente)
 );
 
-CREATE TABLE DCalificacion(
+CREATE TABLE d_calificacion(
 	id_dc SERIAL PRIMARY KEY,
 	id_mc INT,
 	n_ser INT NOT NULL,
@@ -93,20 +93,20 @@ CREATE TABLE DCalificacion(
 	FOREIGN KEY (id_mc) REFERENCES MCalificacion(id_mc)
 );
 
-CREATE TABLE MHorario(
+CREATE TABLE m_horario(
     id_mh SERIAL PRIMARY KEY,
     dia VARCHAR(20) NOT NULL,
     gestion INT NOT NULL
 );
 
-CREATE TABLE Aula(
+CREATE TABLE aula(
 	id_aula SERIAL PRIMARY KEY,
 	nombre VARCHAR(50) NOT NULL,
 	grado INT NOT NULL,
 	paralelo VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE DHorario (
+CREATE TABLE d_horario (
     id_dh SERIAL PRIMARY KEY,
     id_mh INT NOT NULL,
     periodo INT NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE DHorario (
     FOREIGN KEY (id_aula) REFERENCES Aula(id_aula)
 );
 
-CREATE TABLE InscripcionMateria(
+CREATE TABLE inscripcion_materia(
 	id_est_mat SERIAL PRIMARY KEY,
 	id_materia INT,
 	id_estudiante INT,
