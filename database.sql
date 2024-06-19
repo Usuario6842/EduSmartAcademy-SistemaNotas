@@ -1,4 +1,4 @@
-CREATE DATABASE sistemaNotas-EduSmart;
+CREATE DATABASE sistemaNotas_EduSmart;
 
 CREATE TABLE rol(
     id_rol SERIAL PRIMARY KEY,
