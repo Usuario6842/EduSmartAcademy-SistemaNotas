@@ -1,0 +1,60 @@
+.location{
+    background-color: #fff;
+    height: 100vh;
+
+    .location-h3{
+        text-transform: uppercase;
+        font-size: 1.8em;
+        text-align: center;
+        padding: 1rem 0;
+        color: #000;
+    }
+    .location-div{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: start;
+        gap: 1rem;
+    
+        .location-ul{
+            width: 50%;
+            margin: 5rem 0;
+            
+            .location-li{
+                list-style-type: none;
+                padding: 0 4rem;
+
+                .location-h4{
+                    font-size: 1.7em;
+                    padding: .5rem 0;
+                    color: #000;
+                }
+                .location-p{
+                    color: #000;
+                    padding: 0 0 1.3rem 0;
+                }
+            }
+        }
+    }
+    .location-map{
+        position: relative;
+        padding: 1rem;
+        width: 500px;
+        height: 450px;
+    }
+}
+
+.location-list{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+    gap: 0.4rem;
+
+    .list-li{
+        list-style-type: none;
+        color: #000;
+    }
+}
+
+

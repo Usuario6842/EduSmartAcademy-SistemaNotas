@@ -1,0 +1,92 @@
+.header {
+    padding: 1rem 0;
+    z-index: 10;
+    position: relative;
+
+    .header-nav {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+        .header-h1 {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: end;
+            justify-content: end;
+            gap: .5rem;
+
+            .header-logo {
+                height: 1.6em;
+            }
+
+            .header-title {
+                height: 1.2em;
+            }
+        }
+
+        .header-ul {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+
+            .header-li {
+                list-style-type: none;
+
+                .header-item {
+                    position: relative;
+                    font-size: .9em;
+                    font-family: 'Karla', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+                    text-transform: uppercase;
+                    background-color: transparent;
+                    cursor: pointer;
+                    transform: scale(1);
+                    transition: all .3s ease;
+                    text-decoration: none;
+                }
+
+                .header-item:hover {
+                    transform: scale(1.1);
+                }
+
+                .header-item::after {
+                    position: absolute;
+                    content: '';
+                    width: 0%;
+                    height: 2px;
+                    left: 0;
+                    bottom: -5px;
+                    border-radius: 1rem;
+                    background-color: #0A92DD;
+                    transition: width 0.3s ease, left 0.3s ease;
+                }
+
+                .header-item:hover::after {
+                    width: 100%;
+                    left: 0;
+                }
+            }
+        }
+
+        .header-button {
+            background-color: #0A92DD;
+            padding: .5rem 2rem;
+            margin: 0 1rem 0 0;
+            border-radius: 2rem;
+            font-size: 1em;
+            font-weight: 600;
+            font-family: 'Karla', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all .3s ease;
+
+            &:hover {
+                background-color: #eaeaea;
+                transform: scale(1.05);
+                color: #0A92DD;
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+.main{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+
+    .main-section{
+        width: 50%;
+        padding: 0 1rem 6rem;
+        color: #eaeaea;
+        
+        .main-h2{
+            font-size: 2.3em;
+            font-weight: bold;
+            padding: 0 0 1rem 0;
+            strong{
+                color: #69edf7;
+            }
+        }
+        .main-p{
+            padding: 1rem 0 3rem 0;
+            width: 90%;
+            text-wrap: pretty;
+            letter-spacing: 0.3px;
+            color: #d5d9dc;
+            
+        }
+        .main-button{
+            background-color: #0A92DD;
+            padding: .5rem 2rem;
+            border-radius: 2rem;
+            font-size: 1em;
+            font-weight: 600;
+            font-family: 'Karla', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all .3s ease;
+            &:hover{
+                background-color: #eaeaea;
+                transform: scale(1.05);
+                color: #0A92DD;
+            }
+        }
+    }
+    .main-svg{
+        height: 75%;
+    }
+}
+
+.circle1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    width: 500px;
+    z-index: 1;
+}
+
+.circle2{
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    height: 570px;
+    width: 570px;
+    z-index: 1;
+}
+
+.curve1{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
+.curve2{
+    position: absolute;
+    top: 28%;
+    right: 20%;
+    width: 65px;
+    height: 65px;
+    transform: rotate(190deg);
+}
