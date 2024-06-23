@@ -1,0 +1,10 @@
+body{
+    background-color: #100F57;
+}
+.wrapper{
+    max-width: 1100px;
+    height: 350%;
+    overflow: hidden;
+    margin: auto;
+}
+

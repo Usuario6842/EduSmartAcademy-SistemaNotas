@@ -1,0 +1,62 @@
+.about{
+    background-color: #fff;
+    height: 100vh;
+    
+    .about-h3{
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.8em;
+        padding: 1rem 0;
+        color: #000;
+    }
+    .about-ul{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: start;
+        justify-content: center;
+        height: 100%;
+        gap: 5rem;
+        margin: 5rem 0 0 0;
+    }
+    .about-li{
+        list-style-type: none ;
+        width: 50%;
+        padding: 0 4rem;
+        .about-h4{
+            font-size: 1.6em;
+            text-align: start;
+            padding: 1rem 0;
+            color: #000;
+        }
+        .about-p{
+            padding: 1rem 0 ;
+            text-wrap: pretty;
+            color: #000;
+        }
+    }
+
+}
+.valor-ul{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: start;
+    justify-content: center;
+    height: 100%;
+    gap: .7rem;
+    
+    .valor-li{
+        position: relative;
+        list-style-type: none;
+        span{
+            color: #000;
+            padding: 0 2rem;
+        }
+        .valor-svg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+        }
+    }
+}
